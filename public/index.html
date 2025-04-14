@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Upload Wedding Photos</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Hind:wght@500&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <img src="assets/logo.png" alt="Wedding Logo" class="logo"> 
+
+  <div class="container">
+    <form id="uploadForm" enctype="multipart/form-data">
+      <label for="guestName">Your Name:</label>
+      <input type="text" id="guestName" name="guestName" required />
+
+      <label for="photos">Select Photos:</label>
+      <input type="file" id="photos" name="photos" multiple accept="image/*" required />
+
+      <button type="submit">Upload</button>
+    </form>
+
+    <a href="gallery.html" class="button-link">📷 View Gallery</a>
+    <p id="message"></p>
+  </div>
+
+  <script>
+    const form = document.getElementById("uploadForm");
+    const message = document.getElementById("message");
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const formData = new FormData(form);
+
+      const res = await fetch("/upload", {
+        method: "POST",
+        body: formData,
+      });
+
+      const result = await res.text();
+      message.textContent = result;
+      form.reset();
+    });
+  </script>
+</body>
+</html>

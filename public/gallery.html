@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Wedding Photo Gallery</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Hind:wght@500&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Hind', sans-serif;
+      background: url('assets/background.png') no-repeat center top;
+      background-size: cover;
+      background-attachment: fixed;
+      background-color: #fff9f5;
+      display: flex;
+      justify-content: center;
+      min-height: 100vh;
+    }
+
+    .container {
+      margin-top: 180px;
+      width: 90%;
+      max-width: 900px;
+      padding: 24px;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 16px;
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.2);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+    }
+
+    h1 {
+      text-align: center;
+      color: #6d2c2c;
+      margin-bottom: 24px;
+      font-size: 1.8em;
+    }
+
+    #download-all {
+      display: block;
+      margin: 0 auto 20px;
+      padding: 12px 24px;
+      background: #28a745;
+      color: white;
+      font-size: 1em;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      max-width: 220px;
+    }
+
+    #download-all:hover {
+      background: #1e7e34;
+    }
+
+    .guest-block {
+      margin-bottom: 36px;
+      padding: 16px;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.3);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+
+    .guest-block h3 {
+      color: #843c3c;
+      margin-bottom: 14px;
+      font-size: 1.1em;
+      border-bottom: 1px solid #e3d1d1;
+      padding-bottom: 6px;
+    }
+
+    .photo-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .photo-item {
+      width: 120px;
+      text-align: center;
+    }
+
+    .photo-item img {
+      width: 100%;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+      transition: transform 0.2s ease;
+    }
+
+    .photo-item img:hover {
+      transform: scale(1.05);
+    }
+
+    .btn-download {
+      display: inline-block;
+      margin-top: 8px;
+      font-size: 13px;
+      background: #ffcaca;
+      color: #4b2e2e;
+      padding: 6px 12px;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+
+    .btn-download:hover {
+      background: #ffb6b6;
+    }
+
+    @media screen and (max-width: 480px) {
+      .photo-item {
+        width: 45%;
+      }
+
+      .container {
+        margin-top: 140px;
+        padding: 18px;
+      }
+
+      h1 {
+        font-size: 1.4em;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>💍 Wedding Photo Gallery</h1>
+    <button id="download-all">📦&nbsp;Download All</button>
+    <a href="index.html" class="button-link">⬅️&nbsp;Back to Upload Page</a>
+    <div id="gallery"></div>
+  </div>
+
+  <script>
+    async function fetchGallery() {
+      const res = await fetch("/api/gallery");
+      const data = await res.json();
+
+      const gallery = document.getElementById("gallery");
+      gallery.innerHTML = "";
+      for (const guest in data) {
+        const guestBlock = document.createElement("div");
+        guestBlock.className = "guest-block";
+
+        const guestTitle = document.createElement("div");
+        guestTitle.className = "guest-title";
+        guestTitle.innerHTML = `📁 ${guest}`;
+
+        const photoContainer = document.createElement("div");
+        photoContainer.className = "photo-container";
+        photoContainer.style.display = "none"; // initially hidden
+
+        // Toggle visibility on click
+        guestTitle.addEventListener("click", () => {
+            photoContainer.style.display =
+            photoContainer.style.display === "none" ? "flex" : "none";
+        });
+
+        data[guest].forEach(photo => {
+            const encodedGuest = encodeURIComponent(guest);
+            const photoPath = `/uploads/${encodedGuest}/${photo}`;
+
+            const photoItem = document.createElement("div");
+            photoItem.className = "photo-item";
+
+            const img = document.createElement("img");
+            img.src = photoPath;
+            img.alt = photo;
+
+            const link = document.createElement("a");
+            link.href = photoPath;
+            link.download = photo;
+            link.className = "btn-download";
+            link.innerText = "⬇️ Download";
+
+            photoItem.appendChild(img);
+            photoItem.appendChild(link);
+            photoContainer.appendChild(photoItem);
+        });
+
+        guestBlock.appendChild(guestTitle);
+        guestBlock.appendChild(photoContainer);
+        gallery.appendChild(guestBlock);
+        }
+    }
+
+    function downloadAll() {
+      window.location.href = "/download-all";
+    }
+
+    fetchGallery();
+  </script>
+</body>
+</html>

@@ -1,0 +1,162 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Hind', sans-serif;
+  background: url('assets/background.png') no-repeat center top;
+  background-size: cover;
+  background-attachment: fixed;
+  background-color: #fff9f5;
+
+  display: flex;
+  flex-direction: column;   /* ✅ Stack vertically */
+  align-items: center;      /* ✅ Center horizontally */
+  min-height: 100vh;
+}
+.container {
+  margin-top: 380px; /* Adjust based on your logo position */
+  width: 90%;
+  max-width: 400px;
+  padding: 20px;
+
+  background: rgba(255, 255, 255, 0.15); /* Semi-transparent white */
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(12px); /* 🧊 The frosted glass effect */
+  -webkit-backdrop-filter: blur(12px); /* Safari support */
+
+  text-align: center;
+  color: #4b2e2e;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.logo {
+  position: absolute;
+  top: 230px;             /* 👈 Adjust this to move it lower/higher */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: white;
+  padding: 5px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  z-index: 10;
+}
+label {
+  display: block;
+  text-align: left;
+  margin-top: 12px;
+  margin-bottom: 6px;
+  font-weight: bold;
+  color: #4b2e2e;
+}
+
+input[type="text"],
+input[type="file"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #d9cfcf;
+  border-radius: 6px;
+  background-color: #fff;
+  font-size: 1em;
+  box-sizing: border-box;
+}
+
+button,
+.button-link {
+  padding: 12px 24px;
+  margin: 12px auto 0;
+  background-color: #ffb6b6;
+  color: #4b2e2e;
+  font-weight: bold;
+  font-size: 1em;
+  border: none;
+  border-radius: 8px;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-sizing: border-box;
+  display: block;
+  max-width: 220px;  /* ✅ controls width */
+}
+
+
+.button-link {
+  margin-top: 12px; /* 👈 Adds spacing after the upload button */
+}
+
+button:hover,
+.button-link:hover {
+  background-color: #ffcaca;
+  color: #000;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+}
+
+#message {
+  margin-top: 15px;
+  font-weight: bold;
+  color: #4CAF50;
+}
+
+.guest-title {
+  font-size: 1.1em;
+  font-weight: bold;
+  color: #843c3c;
+  padding: 10px 14px;
+  background: #fff3f3;
+  border-radius: 10px;
+  cursor: pointer;
+  user-select: none;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.guest-title:hover {
+  background: #ffeaea;
+}
+
+
+#download-all,
+.button-link {
+  display: block;
+  margin: 14px auto;
+  padding: 12px 20px;
+  max-width: 240px;
+  text-align: center;
+  font-size: 1em;
+  font-weight: 600;
+  border-radius: 10px;
+  color: #4b2e2e;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.25s ease-in-out;
+  letter-spacing: 0.3px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* Download All - pastel green */
+#download-all {
+  background: linear-gradient(to right, #d4f8e8, #a7e9af);
+  border: 1px solid #8fd19e;
+}
+
+#download-all:hover {
+  background: linear-gradient(to right, #a7e9af, #c3f6cf);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(167, 233, 175, 0.5);
+}
+
+/* Back Button - pastel lavender */
+.button-link {
+  background: linear-gradient(to right, #f3e5f5, #e1bee7);
+  border: 1px solid #d1a6d9;
+}
+
+.button-link:hover {
+  background: linear-gradient(to right, #e1bee7, #f3e5f5);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(225, 190, 231, 0.5);
+}

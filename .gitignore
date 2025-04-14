@@ -1,0 +1,9 @@
+#ignore Uploaded Photos
+uploads/
+
+#node Dependenices
+node_modules/
+
+#Optional system/ IDE files
+.DS_Store
+.env
