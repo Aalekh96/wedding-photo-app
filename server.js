@@ -7,6 +7,13 @@ const archiver = require('archiver');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+
+const uploadsPath = path.join(__dirname, 'uploads');
+if (!fs.existsSync(uploadsPath)) {
+  fs.mkdirSync(uploadsPath, { recursive: true });
+  console.log('✅ Created missing uploads/ folder');
+}
+
 // Multer config (same as before)
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
