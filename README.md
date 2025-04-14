@@ -32,8 +32,7 @@ git clone https://github.com/Aalekh96/wedding-photo-app.git
 cd wedding-photo-app
 
 ### Install dependencies
-Copy code
-npm install
+    npm install
 
 ### Create the uploads folder
   Create a folder named uploads in the root directory. This folder is used to store all uploaded images.
@@ -50,20 +49,3 @@ Copy code
 http://localhost:3000
 
 
-wedding-photo-app/
-│
-├── public/                # Frontend files (HTML, CSS, JS)
-│   ├── index.html
-│   ├── gallery.html
-│   ├── script.js
-│   ├── style.css
-│   └── assets/
-│       ├── logo.png
-│       └── background.png
-│
-├── uploads/               # Uploaded images (must be created manually)
-├── server.js              # Main backend server file
-├── package.json           # Node.js dependencies and metadata
-├── package-lock.json
-├── .gitignore
-└── README.md
