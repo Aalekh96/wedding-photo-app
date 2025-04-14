@@ -37,15 +37,12 @@ Follow these steps to set up the project on your local machine:
 ### Create the uploads folder
 Create a folder named uploads in the root directory. This folder is used to store all uploaded images.
 
-mkdir uploads
+    mkdir uploads
 
-### Run the application
-Start the server with: 
-                node server.js
+### Run the application(Start the Server)
+    node server.js
 
 ### Access the app in your browser
-Open your browser and go to
-
-http://localhost:3000
+    http://localhost:3000
 
 
