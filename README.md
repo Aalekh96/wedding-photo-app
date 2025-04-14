@@ -28,24 +28,24 @@ Follow these steps to set up the project on your local machine:
 
 ### 1. **Clone the repository**
 
-git clone https://github.com/Aalekh96/wedding-photo-app.git
-cd wedding-photo-app
+    git clone https://github.com/Aalekh96/wedding-photo-app.git
+    cd wedding-photo-app
 
 ### Install dependencies
     npm install
 
 ### Create the uploads folder
-  Create a folder named uploads in the root directory. This folder is used to store all uploaded images.
-  mkdir uploads
+Create a folder named uploads in the root directory. This folder is used to store all uploaded images.
+
+mkdir uploads
 
 ### Run the application
-Start the server with: node server.js
+Start the server with: 
+                node server.js
 
 ### Access the app in your browser
-Open your browser and go to:
+Open your browser and go to
 
-arduino
-Copy code
 http://localhost:3000
 
 
