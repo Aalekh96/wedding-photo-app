@@ -1,0 +1,38 @@
+config:
+  target: "http://localhost:3000"
+  phases:
+    - duration: 60
+      arrivalRate: 5
+      name: "Test photo upload"
+  payload:
+    path: users.csv
+    fields:
+      - guestName
+
+scenarios:
+  - name: "User uploads 20 photos"
+    flow:
+      - post:
+          url: "/uploads"
+          formData:
+            guestName: "{{ guestName }}"
+            photos[0]: "./test_photos/photo1.jpg"
+            photos[1]: "./test_photos/photo2.jpg"
+            photos[2]: "./test_photos/photo3.jpg"
+            photos[3]: "./test_photos/photo4.jpg"
+            photos[4]: "./test_photos/photo5.jpg"
+            photos[5]: "./test_photos/photo6.jpg"
+            photos[6]: "./test_photos/photo7.jpg"
+            photos[7]: "./test_photos/photo8.jpg"
+            photos[8]: "./test_photos/photo9.jpg"
+            photos[9]: "./test_photos/photo10.jpg"
+            photos[10]: "./test_photos/photo11.jpg"
+            photos[11]: "./test_photos/photo12.jpg"
+            photos[12]: "./test_photos/photo13.jpg"
+            photos[13]: "./test_photos/photo14.jpg"
+            photos[14]: "./test_photos/photo15.jpg"
+            photos[15]: "./test_photos/photo16.jpg"
+            photos[16]: "./test_photos/photo17.jpg"
+            photos[17]: "./test_photos/photo18.jpg"
+            photos[18]: "./test_photos/photo19.jpg"
+            photos[19]: "./test_photos/photo20.jpg"
